@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08060c">
+
+<title>Bizim Hikâyemiz ♥</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    color:#fff;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
+    "SF Pro Text","Segoe UI",sans-serif;
+    background:#05040a;
+}
+
+/* ================= BACKGROUND ================= */
+
+.bg{
+    position:fixed;
+    inset:-12%;
+    z-index:-10;
+    background:
+        linear-gradient(
+            rgba(5,4,10,.55),
+            rgba(5,4,10,.90)
+        ),
+        url("m.JPG") center/cover no-repeat;
+    filter:blur(35px);
+    transform:scale(1.15);
+    opacity:.42;
+}
+
+.bg::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255,75,160,.35),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(117,90,255,.30),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(255,185,95,.18),
+            transparent 35%
+        );
+}
+
+.noise{
+    position:fixed;
+    inset:0;
+    z-index:10;
+    pointer-events:none;
+    opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+/* ================= PARTICLES ================= */
+
+#particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:2;
+    overflow:hidden;
+}
+
+.particle{
+    position:absolute;
+    color:#fff;
+    opacity:.15;
+    text-shadow:0 0 14px #fff;
+    animation:floatParticle linear infinite;
+}
+
+@keyframes floatParticle{
+    0%{
+        transform:translateY(110vh) rotate(0deg);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.8;
+    }
+
+    85%{
+        opacity:.5;
+    }
+
+    100%{
+        transform:translateY(-15vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* ================= INTRO ================= */
+
+.intro{
+    min-height:100svh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px 20px;
+    position:relative;
+}
+
+.intro-content{
+    width:min(900px,100%);
+}
+
+.date-label{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:10px 17px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(255,255,255,.16);
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(25px);
+
+    color:#ffd9e8;
+
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.32em;
+}
+
+.date-label::before,
+.date-label::after{
+    content:"✦";
+    color:#ffd77e;
+}
+
+.intro h1{
+    margin-top:28px;
+
+    font-size:clamp(64px,12vw,145px);
+
+    line-height:.83;
+
+    letter-spacing:-.085em;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff 0%,
+            #ffeaf3 35%,
+            #ff9bc4 70%,
+            #ffc978 100%
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+
+    filter:
+        drop-shadow(0 0 30px rgba(255,100,170,.18));
+}
+
+.intro-text{
+    max-width:650px;
+    margin:32px auto 38px;
+
+    color:rgba(255,255,255,.68);
+
+    font-size:15px;
+    line-height:1.9;
+}
+
+.enter{
+    border:1px solid rgba(255,255,255,.20);
+
+    color:#fff;
+
+    padding:16px 28px;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.15),
+            rgba(255,255,255,.045)
+        );
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        inset 0 1px rgba(255,255,255,.22);
+
+    cursor:pointer;
+
+    font-weight:800;
+
+    transition:.35s;
+}
+
+.enter:hover{
+    transform:translateY(-4px) scale(1.04);
+}
+
+/* ================= MAIN ================= */
+
+main{
+    width:min(1120px,92%);
+    margin:auto;
+    padding-bottom:100px;
+}
+
+.section{
+    margin:25px 0;
+
+    padding:45px;
+
+    border-radius:38px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.105),
+            rgba(255,255,255,.035)
+        );
+
+    border:1px solid rgba(255,255,255,.13);
+
+    backdrop-filter:blur(35px);
+    -webkit-backdrop-filter:blur(35px);
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.38),
+        inset 0 1px rgba(255,255,255,.13);
+}
+
+/* ================= COUPLE ================= */
+
+.couple{
+    text-align:center;
+}
+
+.people{
+    display:grid;
+    grid-template-columns:1fr 160px 1fr;
+    align-items:center;
+    gap:15px;
+}
+
+.person{
+    text-align:center;
+}
+
+.avatar-wrap{
+    position:relative;
+    width:clamp(170px,24vw,285px);
+    aspect-ratio:1;
+    margin:auto;
+}
+
+.avatar-ring{
+    position:absolute;
+    inset:0;
+
+    border-radius:50%;
+
+    background:
+        conic-gradient(
+            from 0deg,
+            #fff,
+            #ff6fa9,
+            #ffd36f,
+            #9b8cff,
+            #fff,
+            #ff6fa9,
+            #fff
+        );
+
+    animation:spinRing 7s linear infinite;
+
+    box-shadow:
+        0 0 30px rgba(255,100,170,.50),
+        0 0 100px rgba(255,100,170,.18);
+}
+
+@keyframes spinRing{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.avatar{
+    position:absolute;
+    inset:7px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    background:#111;
+
+    border:3px solid rgba(255,255,255,.75);
+
+    box-shadow:
+        inset 0 0 25px rgba(0,0,0,.5),
+        0 10px 50px rgba(0,0,0,.45);
+}
+
+.avatar img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.avatar-glow{
+    position:absolute;
+    inset:-17px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.28);
+
+    box-shadow:
+        0 0 35px rgba(255,190,120,.25);
+
+    pointer-events:none;
+}
+
+.avatar-stars{
+    position:absolute;
+    inset:-25px;
+
+    pointer-events:none;
+
+    color:white;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #ff86b7;
+
+    animation:starPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes starPulse{
+    0%,100%{
+        opacity:.35;
+        transform:scale(.95);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.05);
+    }
+}
+
+.person-name{
+    margin-top:28px;
+
+    font-size:22px;
+
+    font-weight:850;
+
+    letter-spacing:-.02em;
+}
+
+.person-sub{
+    margin-top:7px;
+
+    color:rgba(255,255,255,.45);
+
+    font-size:12px;
+}
+
+/* ================= CONNECTION ================= */
+
+.connection{
+    height:150px;
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+.connection-line{
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ff82b6,
+            #ffd477,
+            #ff82b6,
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px #ff6eaa,
+        0 0 35px rgba(255,110,170,.5);
+}
+
+.connection-heart{
+    position:relative;
+    z-index:2;
+
+    width:76px;
+    height:76px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,125,180,.30),
+            rgba(10,6,15,.94) 70%
+        );
+
+    border:1px solid rgba(255,255,255,.25);
+
+    font-size:30px;
+
+    color:#fff;
+
+    text-shadow:
+        0 0 12px #ff70ad,
+        0 0 30px #ff70ad;
+
+    box-shadow:
+        0 0 35px rgba(255,80,155,.65),
+        inset 0 1px rgba(255,255,255,.25);
+
+    animation:heartbeat 1.7s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    12%{
+        transform:scale(1.12);
+    }
+
+    24%{
+        transform:scale(1);
+    }
+
+    36%{
+        transform:scale(1.08);
+    }
+}
+
+/* ================= DAYS ================= */
+
+.days{
+    margin-top:55px;
+
+    padding-top:40px;
+
+    border-top:1px solid rgba(255,255,255,.09);
+}
+
+.days-small{
+    color:rgba(255,255,255,.45);
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.3em;
+}
+
+.days-number{
+    margin-top:7px;
+
+    font-size:clamp(75px,13vw,140px);
+
+    line-height:.9;
+
+    letter-spacing:-.09em;
+
+    font-weight:950;
+
+    background:
+        linear-gradient(
+            180deg,
+            white,
+            #ffd0e4 48%,
+            #ffd36f
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+
+    filter:
+        drop-shadow(0 0 25px rgba(255,130,180,.15));
+}
+
+.days-title{
+    margin-top:12px;
+
+    font-size:15px;
+
+    color:rgba(255,255,255,.68);
+
+    letter-spacing:.08em;
+}
+
+.days-date{
+    margin-top:10px;
+
+    color:rgba(255,255,255,.35);
+
+    font-size:12px;
+}
+
+/* ================= QUOTES ================= */
+
+.section-title{
+    text-align:center;
+
+    font-size:clamp(30px,5vw,50px);
+
+    line-height:1;
+
+    letter-spacing:-.055em;
+
+    font-weight:900;
+
+    margin-bottom:35px;
+}
+
+.quotes{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
+}
+
+.quote{
+    min-height:200px;
+
+    padding:30px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    border-radius:27px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
+
+    color:rgba(255,255,255,.78);
+
+    font-size:14px;
+
+    line-height:1.85;
+
+    transition:.4s;
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.07);
+}
+
+.quote::before{
+    content:"♥";
+
+    position:absolute;
+
+    opacity:.06;
+
+    font-size:90px;
+}
+
+.quote:hover{
+    transform:translateY(-7px);
+
+    border-color:rgba(255,150,200,.22);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.3),
+        0 0 35px rgba(255,100,170,.08);
+}
+
+/* ================= QUESTION ================= */
+
+.question{
+    text-align:center;
+
+    overflow:hidden;
+}
+
+.question-intro{
+    max-width:670px;
+
+    margin:0 auto 35px;
+
+    color:rgba(255,255,255,.58);
+
+    line-height:1.9;
+
+    font-size:14px;
+}
+
+.buttons{
+    position:relative;
+
+    min-height:160px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:16px;
+}
+
+.yes{
+    position:relative;
+
+    z-index:2;
+
+    min-width:170px;
+
+    padding:18px 35px;
+
+    border:0;
+
+    border-radius:999px;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff3f91,
+            #ff72b0 50%,
+            #ffc96e
+        );
+
+    box-shadow:
+        0 15px 55px rgba(255,55,145,.40),
+        inset 0 1px rgba(255,255,255,.45);
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        box-shadow .35s;
+}
+
+.yes:hover{
+    box-shadow:
+        0 20px 75px rgba(255,55,145,.62),
+        inset 0 1px rgba(255,255,255,.55);
+}
+
+.no{
+    position:relative;
+
+    z-index:3;
+
+    padding:14px 25px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    color:rgba(255,255,255,.78);
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(20px);
+
+    cursor:pointer;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.no:hover{
+    background:rgba(255,255,255,.10);
+}
+
+/* ================= SUCCESS ================= */
+
+.success{
+    display:none;
+
+    text-align:center;
+
+    padding:100px 25px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.success.active{
+    display:block;
+
+    animation:successIn 1s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes successIn{
+    from{
+        opacity:0;
+        transform:scale(.75);
+        filter:blur(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+        filter:blur(0);
+    }
+}
+
+.success-heart{
+    font-size:70px;
+
+    animation:
+        heartbeat 1.4s infinite;
+
+    text-shadow:
+        0 0 20px #ff75af,
+        0 0 60px #ff75af;
+}
+
+.success-title{
+    margin-top:25px;
+
+    font-size:clamp(43px,8vw,90px);
+
+    line-height:.95;
+
+    letter-spacing:-.07em;
+
+    font-weight:950;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ff9cc5,
+            #ffd474,
+            #fff,
+            #ff9cc5
+        );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+
+    animation:gradientMove 4s linear infinite;
+
+    filter:
+        drop-shadow(0 0 25px rgba(255,100,170,.22));
+}
+
+@keyframes gradientMove{
+    to{
+        background-position:300%;
+    }
+}
+
+.success-text{
+    margin-top:25px;
+
+    color:rgba(255,255,255,.58);
+
+    line-height:1.8;
+
+    font-size:14px;
+}
+
+/* ================= FULL YES ================= */
+
+.full-yes{
+    position:fixed !important;
+
+    inset:0 !important;
+
+    width:100vw !important;
+    height:100vh !important;
+
+    min-width:0 !important;
+
+    border-radius:0 !important;
+
+    z-index:9999 !important;
+
+    font-size:clamp(40px,10vw,110px) !important;
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+    box-shadow:
+        0 0 120px rgba(255,60,150,.7),
+        inset 0 0 100px rgba(255,255,255,.08) !important;
+
+    transition:
+        all 1s cubic-bezier(.2,.8,.2,1) !important;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:750px){
+
+    .section{
+        padding:27px 20px;
+        border-radius:30px;
+    }
+
+    .people{
+        grid-template-columns:1fr;
+        gap:10px;
+    }
+
+    .connection{
+        height:95px;
+        width:150px;
+        margin:auto;
+    }
+
+    .connection-line{
+        width:100%;
+    }
+
+    .quotes{
+        grid-template-columns:1fr;
+    }
+
+    .quote{
+        min-height:170px;
+    }
+
+    .buttons{
+        min-height:180px;
+    }
+
+    .no{
+        position:absolute;
+        bottom:5px;
+    }
+
+    .avatar-wrap{
+        width:205px;
+    }
+}
+
+@media(max-width:400px){
+
+    .intro h1{
+        font-size:61px;
+    }
+
+    .section-title{
+        font-size:31px;
+    }
+
+    .avatar-wrap{
+        width:180px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="noise"></div>
+<div id="particles"></div>
+
+<!-- ================= INTRO ================= -->
+
+<section class="intro">
+
+    <div class="intro-content">
+
+        <div class="date-label">
+            19 HAZİRAN 2025
+        </div>
+
+        <h1>
+            Bizim<br>
+            Hikâyemiz.
+        </h1>
+
+        <p class="intro-text">
+            Bazı insanlar hayatımıza sessizce girer.
+            Sonra fark edersin ki, eskiden sıradan olan
+            günlerin artık bir anlamı vardır.
+            <br><br>
+            Benim hikâyemde o anlam sensin.
+        </p>
+
+        <button
+            class="enter"
+            onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})"
+        >
+            Hikâyemize gir&nbsp; →
+        </button>
+
+    </div>
+
+</section>
+
+
+<main id="story">
+
+<!-- ================= COUPLE ================= -->
+
+<section class="section couple">
+
+    <div class="people">
+
+        <div class="person">
+
+            <div class="avatar-wrap">
+
+                <div class="avatar-ring"></div>
+
+                <div class="avatar">
+                    <img src="m.JPG" alt="Ben">
+                </div>
+
+                <div class="avatar-glow"></div>
+
+                <div class="avatar-stars">
+                    ✦
+                </div>
+
+            </div>
+
+            <div class="person-name">
+                Ben
+            </div>
+
+            <div class="person-sub">
+                Senin yanında
+            </div>
+
+        </div>
+
+
+        <div class="connection">
+
+            <div class="connection-line"></div>
+
+            <div class="connection-heart">
+                ♥
+            </div>
+
+        </div>
+
+
+        <div class="person">
+
+            <div class="avatar-wrap">
+
+                <div class="avatar-ring"></div>
+
+                <div class="avatar">
+                    <img src="her.jpg" alt="Sevgilim">
+                </div>
+
+                <div class="avatar-glow"></div>
+
+                <div class="avatar-stars">
+                    ✦
+                </div>
+
+            </div>
+
+            <div class="person-name">
+                Sevgilim
+            </div>
+
+            <div class="person-sub">
+                İyi ki varsın
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="days">
+
+        <div class="days-small">
+            19 Haziran 2025'ten beri
+        </div>
+
+        <div
+            class="days-number"
+            id="days"
+        >
+            0
+        </div>
+
+        <div class="days-title">
+            gündür birlikteyiz ♥
+        </div>
+
+        <div
+            class="days-date"
+            id="dateInfo"
+        >
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WORDS ================= -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Sana söylemek istediklerim.
+    </h2>
+
+    <div class="quotes">
+
+        <div class="quote">
+            Senin yanında kendim olmak için
+            hiçbir şey kanıtlamam gerekmiyor.
+            Olduğum kişiyle sevildiğimi hissetmek,
+            bana verebileceğin en güzel şeylerden biri.
+        </div>
+
+        <div class="quote">
+            Birlikte geçirdiğimiz günleri sadece
+            takvimdeki sayılar olarak görmüyorum.
+            Her birinin içinde bir gülüş,
+            bir konuşma, bir bakış ve bir anı var.
+        </div>
+
+        <div class="quote">
+            Bazen sana bakıp hiçbir şey söylemeden
+            sadece “iyi ki” diyorum.
+            Çünkü bazı hisleri anlatmaya
+            kelimeler gerçekten yetmiyor.
+        </div>
+
+        <div class="quote">
+            Seni kusursuz olduğun için sevmiyorum.
+            Seni sen olduğun için seviyorum.
+            Gülüşünü, kızmanı, konuşmanı,
+            hatta bazen hiçbir şey söylemeyişini bile.
+        </div>
+
+        <div class="quote">
+            19 Haziran 2025 benim için artık
+            sadece bir tarih değil.
+            Hayatımın güzel bir bölümünün
+            başladığı gün.
+        </div>
+
+        <div class="quote">
+            Gelecekte neler yaşayacağımızı
+            kimse kesin olarak bilemez.
+            Ama bugün bildiğim bir şey var:
+            İyi ki hayatımda varsın.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= QUESTION ================= -->
+
+<section
+    class="section question"
+    id="question"
+>
+
+    <h2 class="section-title">
+        Beni seviyor musun?
+    </h2>
+
+    <p class="question-intro">
+        Bu sorunun cevabını aslında kalbim biliyor.
+        Ama yine de senden duymak istiyorum.
+        <br>
+        <br>
+        <strong>
+            Hayır'a basmak tamamen senin seçimin...
+        </strong>
+        <br>
+        yalnız küçük bir problem var:
+        Her “hayır” dediğinde, benim “EVET”im
+        biraz daha büyüyor. ♥
+    </p>
+
+
+    <div class="buttons">
+
+        <button
+            class="yes"
+            id="yes"
+        >
+            EVET ♥
+        </button>
+
+        <button
+            class="no"
+            id="no"
+        >
+            Hayır
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SUCCESS ================= -->
+
+<section
+    class="section success"
+    id="success"
+>
+
+    <div class="success-heart">
+        ♥
+    </div>
+
+    <div class="success-title">
+        Ben de seni<br>
+        seviyorum sevgilim.
+    </div>
+
+    <p class="success-text">
+        İyi ki 19 Haziran 2025'te tanışmışız.
+        <br>
+        Ve iyi ki bu hikâyenin bir parçası olmuşsun.
+        ♥
+    </p>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   GÜN SAYACI
+===================================================== */
+
+const startDate =
+    new Date("2025-06-19T00:00:00+03:00");
+
+function updateDays(){
+
+    const now = new Date();
+
+    const difference =
+        now.getTime() -
+        startDate.getTime();
+
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+    document.getElementById("days")
+        .textContent =
+        days.toLocaleString("tr-TR");
+
+    document.getElementById("dateInfo")
+        .textContent =
+        "19 Haziran 2025 • Bugün • " +
+        now.toLocaleDateString("tr-TR");
+
+}
+
+updateDays();
+
+setInterval(updateDays,60000);
+
+
+/* =====================================================
+   PARILTILAR
+===================================================== */
+
+const particles =
+    document.getElementById("particles");
+
+const symbols =
+    ["✦","✧","·","♡","✦"];
+
+for(let i=0;i<55;i++){
+
+    const p =
+        document.createElement("div");
+
+    p.className="particle";
+
+    p.textContent =
+        symbols[
+            Math.floor(
+                Math.random()*symbols.length
+            )
+        ];
+
+    p.style.left =
+        Math.random()*100+"vw";
+
+    p.style.animationDuration =
+        (8+Math.random()*14)+"s";
+
+    p.style.animationDelay =
+        (-Math.random()*20)+"s";
+
+    p.style.fontSize =
+        (6+Math.random()*13)+"px";
+
+    particles.appendChild(p);
+}
+
+
+/* =====================================================
+   HAYIR / EVET
+===================================================== */
+
+const yes =
+    document.getElementById("yes");
+
+const no =
+    document.getElementById("no");
+
+const question =
+    document.getElementById("question");
+
+const success =
+    document.getElementById("success");
+
+let noCount = 0;
+
+const noMessages = [
+
+    "Hayır",
+
+    "Emin misin? ♥",
+
+    "Gerçekten mi?",
+
+    "Bir daha düşün...",
+
+    "Kalbim bunu duyunca üzüldü :(",
+
+    "Son kararın mı?",
+
+    "Tamam... ama EVET artık kaçınılmaz ♥"
+
+];
+
+
+no.addEventListener("click",function(){
+
+    noCount++;
+
+    const messageIndex =
+        Math.min(
+            noCount,
+            noMessages.length-1
+        );
+
+    no.textContent =
+        noMessages[messageIndex];
+
+
+    /*
+        Her hayırda EVET biraz daha büyür.
+    */
+
+    const scale =
+        Math.min(
+            1 + noCount * .55,
+            5.5
+        );
+
+    yes.style.transform =
+        `scale(${scale})`;
+
+
+    /*
+        6. hayırdan sonra
+        EVET bütün ekranı kaplamaya başlar.
+    */
+
+    if(noCount >= 6){
+
+        yes.classList.add("full-yes");
+
+        yes.textContent =
+            "EVET ♥";
+
+        no.style.opacity="0";
+
+        no.style.pointerEvents="none";
+
+    }
+
+});
+
+
+/* =====================================================
+   EVET
+===================================================== */
+
+yes.addEventListener("click",function(){
+
+    question.style.display="none";
+
+    success.classList.add("active");
+
+    success.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+
+    /*
+        Büyük kutlama.
+    */
+
+    createCelebration();
+
+});
+
+
+/* =====================================================
+   KUTLAMA
+===================================================== */
+
+function createCelebration(){
+
+    const celebrationSymbols =
+        ["♥","♡","✦","✧","♥","✦"];
+
+    for(let i=0;i<130;i++){
+
+        setTimeout(function(){
+
+            const item =
+                document.createElement("div");
+
+            item.textContent =
+                celebrationSymbols[
+                    Math.floor(
+                        Math.random() *
+                        celebrationSymbols.length
+                    )
+                ];
+
+            item.style.position="fixed";
+
+            item.style.left =
+                Math.random()*100+"vw";
+
+            item.style.top =
+                "-40px";
+
+            item.style.fontSize =
+                (12+Math.random()*28)+"px";
+
+            item.style.color =
+                Math.random()>.5
+                ? "#fff"
+                : "#ff8fbd";
+
+            item.style.textShadow =
+                "0 0 15px rgba(255,100,170,.9)";
+
+            item.style.zIndex="10000";
+
+            item.style.pointerEvents="none";
+
+            item.style.transition =
+                "transform 2.8s cubic-bezier(.2,.7,.3,1), opacity 2.8s";
+
+            document.body.appendChild(item);
+
+            requestAnimationFrame(function(){
+
+                item.style.transform =
+                    `translateY(115vh)
+                     translateX(${(Math.random()-.5)*180}px)
+                     rotate(${Math.random()*720-360}deg)`;
+
+                item.style.opacity="0";
+
+            });
+
+            setTimeout(function(){
+
+                item.remove();
+
+            },3000);
+
+        },i*22);
+
+    }
+
+}
+
+
+/* =====================================================
+   AVATAR PARILTILARI
+===================================================== */
+
+document
+    .querySelectorAll(".avatar-wrap")
+    .forEach(function(avatar){
+
+        avatar.addEventListener(
+            "click",
+            function(){
+
+                for(let i=0;i<12;i++){
+
+                    const spark =
+                        document.createElement("div");
+
+                    spark.textContent="✦";
+
+                    spark.style.position="fixed";
+
+                    spark.style.left =
+                        (
+                            avatar.getBoundingClientRect().left +
+                            avatar.offsetWidth/2
+                        )+"px";
+
+                    spark.style.top =
+                        (
+                            avatar.getBoundingClientRect().top +
+                            avatar.offsetHeight/2
+                        )+"px";
+
+                    spark.style.color="#fff";
+
+                    spark.style.fontSize="15px";
+
+                    spark.style.zIndex="9999";
+
+                    spark.style.pointerEvents="none";
+
+                    spark.style.transition=
+                        "1s ease-out";
+
+                    document.body.appendChild(spark);
+
+                    setTimeout(function(){
+
+                        spark.style.transform =
+                            `translate(
+                                ${(Math.random()-.5)*180}px,
+                                ${(Math.random()-.5)*180}px
+                            )`;
+
+                        spark.style.opacity="0";
+
+                    },20);
+
+                    setTimeout(function(){
+
+                        spark.remove();
+
+                    },1100);
+
+                }
+
+            }
+        );
+
+    });
+
+</script>
+
+</body>
+</html>
